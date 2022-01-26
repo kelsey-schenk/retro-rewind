@@ -24,3 +24,18 @@ h1 {
 ul {
     color: var(--purple);
 }
+.user-form {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.field {
+    margin-top: 15px;
+    padding-left: 50px;
+    width: 500px;
+}
+
+.buttons {
+    margin-top: 15px;
+    padding-left: 200px;
+}
