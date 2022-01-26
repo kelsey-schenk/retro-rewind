@@ -16,4 +16,8 @@ router.get('/dashboard', (req, res) => {
   res.render('dashboard');
 });
 
+router.get('/movie', (req, res) => {
+  res.render('movie');
+});
+
 module.exports = router;

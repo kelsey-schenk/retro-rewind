@@ -39,3 +39,18 @@ ul {
     margin-top: 15px;
     padding-left: 200px;
 }
+
+.columns {
+    margin: 15px;
+}
+
+footer {
+    margin-top: 150px;
+}
+
+.box {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 100px;
+    margin-left: 100px;
+}
