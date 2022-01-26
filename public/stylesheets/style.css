@@ -19,6 +19,9 @@ body {
 
 h1 {
     color: var(--blue);
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
 }
 
 ul {
@@ -53,4 +56,28 @@ footer {
     margin-bottom: 5px;
     margin-right: 100px;
     margin-left: 100px;
+}
+
+.reviewTitle {
+    font: bold;
+    font-size: 18px;
+}
+
+.username {
+    font: italic;
+    font-size: 14px;
+    color: lightslategray;
+}
+
+.reviewDescription {
+    margin-top: 8px;
+    font-size: 16px;
+}
+
+.movieDescription {
+    background-color: white;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    padding: 8px;
 }
