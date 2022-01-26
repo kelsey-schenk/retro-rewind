@@ -11,6 +11,9 @@ reviews.init(
             primaryKey: true,
             autoIncrement: true
         },
+        review_title: {
+
+        },
         review_text: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -35,23 +38,6 @@ reviews.init(
         rating_provided: {
             type: DataTypes.INTEGER
             // what else here?
-        },
-        description: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [20]
-            }
-        },
-        status: {
-            type: DataTypes.STRING,
-            references: {
-                model: 'rentals',
-                key: 'date-in',
-                validate: {
-                    // how do we make sure the status is set to available?
-                }
-            }
         }
     },
     {

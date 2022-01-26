@@ -11,11 +11,19 @@ movies.init(
             primaryKey: true,
             autoIncrement: true
         },
+        user_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'user',
+                key: 'id'
+            }
+        },
         title: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [4]
+                len: [1]
             }
         },
         rating: {
@@ -25,7 +33,23 @@ movies.init(
                 len: [1]
             }
         },
-        
+        description: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [20]
+            }
+        },
+        status: {
+            type: DataTypes.STRING,
+            references: {
+                model: 'rentals',
+                key: 'date-in',
+                validate: {
+                    // how do we make sure the status is set to available?
+                }
+            }
+        }
     },
     {
         sequelize,
