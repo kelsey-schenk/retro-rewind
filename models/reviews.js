@@ -33,5 +33,14 @@ reviews.init(
             }
         }
         // rating provided??
+    },
+    {
+        sequelize,
+        timestamps: false,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'reviews',
     }
-)
+);
+
+module.exports = reviews;

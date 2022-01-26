@@ -16,5 +16,14 @@ movies.init(
             allowNull: false,
             
         }
+    },
+    {
+        sequelize,
+        timestamps: false,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'movies',
     }
-)
+);
+
+module.exports = movies;
