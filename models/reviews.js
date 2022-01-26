@@ -31,8 +31,28 @@ reviews.init(
                 model: 'movies',
                 key: 'id'
             }
+        },
+        rating_provided: {
+            type: DataTypes.INTEGER
+            // what else here?
+        },
+        description: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [20]
+            }
+        },
+        status: {
+            type: DataTypes.STRING,
+            references: {
+                model: 'rentals',
+                key: 'date-in',
+                validate: {
+                    // how do we make sure the status is set to available?
+                }
+            }
         }
-        // rating provided??
     },
     {
         sequelize,

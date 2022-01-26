@@ -14,8 +14,18 @@ movies.init(
         title: {
             type: DataTypes.STRING,
             allowNull: false,
-            
-        }
+            validate: {
+                len: [4]
+            }
+        },
+        rating: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
+        },
+        
     },
     {
         sequelize,
