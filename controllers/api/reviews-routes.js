@@ -4,7 +4,7 @@ const withAuth = require('../../utils/auth');
 
 router.get('/', (req, res) => {
     Reviews.findAll()
-        .then(dbCommentData => res.json(dbCommentData))
+        .then(dbReviewsData => res.json(dbReviewsData))
         .catch(err => {
         console.log(err);
         res.status(500).json(err);
@@ -14,14 +14,34 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
     Reviews.create({
-        reviews_text: req.body.comment_text,
+        review_title: req.body.review_title,
+        review_text: req.body.review_text,
         user_id: req.body.user_id,
-        post_id: req.body.post_id
+        movies_id: req.body.movies_id
     })
-    .then(dbCommentData => res.json(dbCommentData))
+    .then(dbReviewsData => res.json(dbReviewsData))
     .catch(err => {
         console.log(err);
         res.status(400).json(err);
+    });
+});
+
+router.delete('/:id', withAuth, (req, res) => {
+    Reviews.destroy({
+    where: {
+        id: req.params.id
+    }
+    })
+    .then(dbReviewsData => {
+        if (!dbReviewsData) {
+        res.status(404).json({ message: 'No review found with this id!' });
+        return;
+        }
+        res.json(dbReviewsData);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
     });
 });
 
