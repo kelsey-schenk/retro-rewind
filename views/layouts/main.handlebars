@@ -38,12 +38,19 @@
         <div class="navbar-end">
         <div class="navbar-item">
             <div class="buttons">
-            <a class="button is-primary" href="/signup">
-                <strong>Sign up</strong>
-            </a>
-            <a class="button is-light" href="/login">
-                Log in
-            </a>
+                {{#if loggedIn}}
+                <a class="button is-primary" href="/dashboard">
+                    Dashboard
+                </a>
+                <button id="logout" class="button is-light">logout</button>
+                {{else}}
+                <a class="button is-primary" href="/signup">
+                    <strong>Sign up</strong>
+                </a>
+                <a class="button is-light" href="/login">
+                    Log in
+                </a>
+                {{/if}}
             </div>
         </div>
         </div>
@@ -58,6 +65,9 @@
     </footer>
   </div>
 
+  {{#if loggedIn}}
+  <script src="/javascript/logout.js"></script>
+  {{/if}}
 </body>
 
 <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
