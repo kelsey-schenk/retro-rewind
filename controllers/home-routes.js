@@ -20,4 +20,8 @@ router.get('/movie', (req, res) => {
   res.render('movie');
 });
 
+router.get('/searchMovies', (req, res) => {
+  res.render('searchMovies');
+});
+
 module.exports = router;
