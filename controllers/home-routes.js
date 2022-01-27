@@ -2,6 +2,7 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { User, Reviews, Rentals, Movie } = require('../models');
 
+//Index Links
 router.get('/', (req, res) => {
   res.render('homepage');
 });
@@ -25,5 +26,16 @@ router.get('/movie', (req, res) => {
 router.get('/searchMovies', (req, res) => {
   res.render('searchMovies');
 });
+
+//USER SESSION
+router.get('/login', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+
+  res.render('login');
+});
+
 
 module.exports = router;
