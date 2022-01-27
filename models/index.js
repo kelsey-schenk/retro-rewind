@@ -15,56 +15,6 @@ Movie.belongsTo(User, {
 });
 
 // This is where it starts to not line up so cleanly
-User.belongsToMany(Movie, {
-  through: Review,
-  as: 'movie_review',
 
-  foreignKey: 'user_id',
-  onDelete: 'SET NULL'
-});
-
-Movie.belongsToMany(User, {
-  through: Review,
-  as: 'movie_review',
-  foreignKey: 'movies_id',
-  onDelete: 'SET NULL'
-});
-
-Review.belongsTo(User, {
-  foreignKey: 'user_id',
-  onDelete: 'SET NULL'
-});
-
-Review.belongsTo(Movie, {
-  foreignKey: 'post_id',
-  onDelete: 'SET NULL'
-});
-
-User.hasMany(Review, {
-  foreignKey: 'user_id'
-});
-
-Movie.hasMany(Review, {
-  foreignKey: 'post_id'
-});
-
-.belongsTo(User, {
-  foreignKey: 'user_id',
-  onDelete: 'SET NULL'
-});
-
-Comment.belongsTo(Post, {
-  foreignKey: 'post_id',
-  onDelete: 'SET NULL'
-});
-
-User.hasMany(Rentals, {
-  foreignKey: 'user_id',
-  onDelete: 'SET NULL'
-});
-
-Post.hasMany(Comment, {
-  foreignKey: 'post_id'
-});
 
 module.exports = { User, Movie, Rentals, Review };

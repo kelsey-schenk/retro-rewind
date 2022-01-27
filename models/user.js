@@ -2,10 +2,10 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 const bcrypt = require('bcrypt');
 
-class user extends Model {}
+class User extends Model {}
 
 // defining user schema
-user.init(
+User.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -45,8 +45,7 @@ user.init(
                 return updatedUserData;
             }
         },
-    },
-    {
+
         sequelize,
         timestamps: false,
         freezeTableName: true,
@@ -55,4 +54,4 @@ user.init(
     }
 );
 
-module.exports = user;
+module.exports = User;
