@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Review, Rentals, Movie } = require('../../models');
+const { User, Reviews, Rentals, Movie } = require('../../models');
 
 // GET /api/users
 router.get('/', (req, res) => {
@@ -32,9 +32,9 @@ router.get('/:id', (req, res) => {
                 as: 'rented_movies'
             },
             {
-                model: Review,
+                model: Reviews,
                 attributes: ['id', 'review_title'],
-                through: Review,
+                through: Reviews,
                 as: 'reviews_written'
             }
         ]
