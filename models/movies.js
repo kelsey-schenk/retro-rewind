@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class movies extends Model {}
+class Movies extends Model {}
 
-movies.init(
+Movies.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -13,7 +13,7 @@ movies.init(
         },
         user_id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            //allowNull: false,
             references: {
                 model: 'user',
                 key: 'id'
@@ -22,6 +22,7 @@ movies.init(
         title: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: true,
             validate: {
                 len: [1]
             }
@@ -42,13 +43,7 @@ movies.init(
         },
         status: {
             type: DataTypes.STRING,
-            references: {
-                model: 'rentals',
-                key: 'date-in',
-                validate: {
-                    // how do we make sure the status is set to available?
-                }
-            }
+        
         }
     },
     {
@@ -60,4 +55,4 @@ movies.init(
     }
 );
 
-module.exports = movies;
+module.exports = Movies;

@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class rentals extends Model {}
+class Rentals extends Model {}
 
-rentals.init(
+Rentals.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -24,7 +24,28 @@ rentals.init(
                 model: 'movies',
                 key: 'id'
             }
+        },
+        date_out: {
+            type: DataTypes.DATE,
+            validate: {
+
+            }
+        },
+        date_in: {
+            type: DataTypes.DATE,
+            validate: {
+
+            }
         }
+    },
+    {
+        sequelize,
+        timestamps: false,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'rentals',
     }
 
 )
+
+module.exports = Rentals;
