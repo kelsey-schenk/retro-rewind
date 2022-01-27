@@ -20,6 +20,7 @@ router.get('/:id', (req, res) => {
         where: {
             id: req.params.id
         },
+        /*
         include: [
             {
                 model: Movie,
@@ -38,6 +39,7 @@ router.get('/:id', (req, res) => {
                 as: 'reviews_written'
             }
         ]
+        */
     })
     .then(dbUserData =>{
         if (!dbUserData) {
