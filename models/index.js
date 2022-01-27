@@ -30,25 +30,25 @@ Movie.belongsToMany(User, {
   onDelete: 'SET NULL'
 });
 
-Vote.belongsTo(User, {
+Review.belongsTo(User, {
   foreignKey: 'user_id',
   onDelete: 'SET NULL'
 });
 
-Vote.belongsTo(Post, {
+Review.belongsTo(Movie, {
   foreignKey: 'post_id',
   onDelete: 'SET NULL'
 });
 
-User.hasMany(Vote, {
+User.hasMany(Review, {
   foreignKey: 'user_id'
 });
 
-Post.hasMany(Vote, {
+Movie.hasMany(Review, {
   foreignKey: 'post_id'
 });
 
-Comment.belongsTo(User, {
+.belongsTo(User, {
   foreignKey: 'user_id',
   onDelete: 'SET NULL'
 });
@@ -58,7 +58,7 @@ Comment.belongsTo(Post, {
   onDelete: 'SET NULL'
 });
 
-User.hasMany(Comment, {
+User.hasMany(Rentals, {
   foreignKey: 'user_id',
   onDelete: 'SET NULL'
 });
@@ -67,4 +67,4 @@ Post.hasMany(Comment, {
   foreignKey: 'post_id'
 });
 
-module.exports = { User, Post, Vote, Comment };
+module.exports = { User, Movie, Vote, Review };
