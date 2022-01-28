@@ -42,11 +42,12 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-// router.get('/', (req, res) => {
-//   console.log(req.session);
 
-//   // other logic...
-// });
-
+router.get('/', (req, res) => {
+  res.render('searchMovies', {
+    title: 'Handlebars Docs',
+    description: 'movie description'
+  });
+});
 
 module.exports = router;

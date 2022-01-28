@@ -11,9 +11,9 @@
     "mysql2": "^2.3.3",
     "sequelize": "^6.14.1"
   },
-  "nodemonConfig":{
+  "nodemonConfig": {
     "delay": 2000,
-    "ignore":[]
+    "ignore": []
   },
   "scripts": {
     "watch": "nodemon",
