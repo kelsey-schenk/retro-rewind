@@ -50,7 +50,7 @@ router.post('/', (req, res) => {
     */
     Movies.create(req.body)
     .then((movie) => {
-        res.status(200).json(movie;
+        res.status(200).json(movie);
     })
     .catch((err) => {
         console.log(err);
