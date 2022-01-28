@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Review, Rentals, Movies } = require('../../models')
+const { User, Review, Rentals, Movies, Movie } = require('../../models')
 
 router.get('/', (req, res) => {
     Movies.findAll(
@@ -43,29 +43,61 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     /* req.body should look like this...
     {
-        product_name: "Basketball",
-        price: 200.00,
-        stock: 3,
-        tagIds: [1, 2, 3, 4]
+        title: "Free Willy",
+        rating: "PG",
+        description: "Movie Description",
     }
     */
     Movies.create(req.body)
-    .then((product) => {
-        if (req.body.tagIds.length) {
-        const productTagIdArr = req.body.tagIds.map((tag_id) => {
-            return {
-            product_id: product.id,
-            tag_id,
-            };
-        });
-        return ProductTag.bulkCreate(productTagIdArr);
-        }
-        res.status(200).json(product);
+    .then((movie) => {
+        res.status(200).json(movie);
     })
-    .then((productTagIds) => res.status(200).json(productTagIds))
     .catch((err) => {
         console.log(err);
         res.status(400).json(err);
+    });
+});
+
+router.put('/:id', (req, res) => {
+    Movie.update(
+        {
+            title: req.params.title,
+        },
+        {
+            where: {
+                id: req.params.id
+            }
+        }
+    )
+    .then(dbMoviesData =>{
+        if(!dbMoviesData) {
+            res.status(404).json({ message: 'No movie found with this id' });
+        }
+        res.json(dbMoviesData);
+    })
+    .catch((err) => {
+        // console.log(err);
+        res.status(400).json(err);
+    });
+});
+
+
+router.delete('/:id', (req, res) => {
+    // update product data
+    Movie.destroy({
+    where: {
+        id: req.params.id,
+        },
+    })
+    .then(moviesData => {
+        if(!moviesData) {
+            res.status(404).json({ message: 'No movie found with that id' });
+        }
+        res.json(moviesData);
+    })
+    .catch((err) => {
+        // console.log(err);
+        res.status(500).json(err);
     });
 });
 
