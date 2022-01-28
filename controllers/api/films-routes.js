@@ -58,7 +58,28 @@ router.post('/', (req, res) => {
     });
 });
 
-
+router.put('/:id', (req, res) => {
+    Movie.update(
+        {
+            title: req.params.title,
+        },
+        {
+            where: {
+                id: req.params.id
+            }
+        }
+    )
+    .then(dbMoviesData =>{
+        if(!dbMoviesData) {
+            res.status(404).json({ message: 'No movie found with this id' });
+        }
+        res.json(dbMoviesData);
+    })
+    .catch((err) => {
+        // console.log(err);
+        res.status(400).json(err);
+    });
+});
 
 
 router.delete('/:id', (req, res) => {
