@@ -5,40 +5,39 @@ router.get('/', (req, res) => {
     Movies.findAll({
         attributes: ['id', 'title', 'rating', 'description', 'status', 'user_id'],
     })
-      .then(dbUserData => res.json(dbUserData))
+      .then(dbMoviesData => res.json(dbMoviesData))
       .catch(err => {
         console.log(err);
         res.status(500).json(err);
       });
   });
 
-router.get('/:id', (req, res) => {
-    Movies.findOne(
-    {
+  router.get('/:id', (req, res) => {
+    Movies.findOne({
+        attributes: ['id', 'title', 'rating', 'description', 'status', 'user_id'],
         where: {
-        id: req.params.id
+            id: req.params.id
         },
-        include: [
-        {
-            model:  Movies,
-            attributes: ['id', 'user_id', 'title', 'rating', 'status']
-        },
-        ]
-    }
-    )
-    .then(moviesData => res.json(moviesData))
+    })
+    .then(dbMoviesData =>{
+        if (!dbMoviesData) {
+            res.status(404).json({ message: 'No movie found with this id' });
+            return;
+        }
+        res.json(dbMoviesData);
+    })
     .catch(err => {
         console.log(err);
-        res.status(500).json(err)
+        res.status(500).json(err);
     });
 });
 
 router.post('/', (req, res) => {
     /* req.body should look like this...
     {
-        title: "Free Willy",
-        rating: "PG",
-        description: "Movie Description",
+        "title": "Free Willy",
+        "rating": "PG",
+        "description": "Movie Description",
     }
     */
     Movies.create(req.body)
@@ -52,32 +51,29 @@ router.post('/', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-    Movie.update(
-        {
-            title: req.params.title,
-        },
-        {
-            where: {
-                id: req.params.id
-            }
+    Movies.update(req.body, {
+        individualHooks: true,
+        where: {
+            id: req.params.id
         }
-    )
-    .then(dbMoviesData =>{
-        if(!dbMoviesData) {
-            res.status(404).json({ message: 'No movie found with this id' });
+    })
+    .then(dbMoviesData => {
+        if (!dbMoviesData[0]) {
+            res.status(404).json({ message: 'No movie found with this id'});
+            return;
         }
         res.json(dbMoviesData);
     })
-    .catch((err) => {
-        // console.log(err);
-        res.status(400).json(err);
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
     });
 });
 
 
 router.delete('/:id', (req, res) => {
     // update product data
-    Movie.destroy({
+    Movies.destroy({
     where: {
         id: req.params.id,
         },

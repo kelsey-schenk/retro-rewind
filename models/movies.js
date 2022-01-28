@@ -23,27 +23,19 @@ Movies.init(
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
-            validate: {
-                len: [1]
-            }
         },
         rating: {
             type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [1]
-            }
+            defaultValue: "5"
+            //allowNull: false,
         },
         description: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                len: [20]
-            }
         },
         status: {
             type: DataTypes.STRING,
-        
+            defaultValue: "available"
         }
     },
     {
