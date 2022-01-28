@@ -1,6 +1,6 @@
 {{#if loggedIn}}
 <div class="columns">
-  <div class="column">
+    <div class="column">
         <div class="columns is-mobile is-centered">
             <div class="column">
                 <table class="table is-striped is-hoverable is-fullwidth">
@@ -9,7 +9,7 @@
                             <th>My Movies</th>
                             <th>
                                 <div class="tableButton">
-                                    <button class="button is-primary">Add Movie</button>
+                                    <button class="button is-primary" id="addMovie">Add Movie</button>
                                 </div>
                             </th>
                         </tr>
@@ -37,14 +37,14 @@
                                 </div>
                             </th>
                         </tr>
-                        
+
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 
-  <div class="column">
+    <div class="column">
         <div class="columns is-mobile is-centered">
             <div class="column">
                 <table class="table is-striped is-hoverable is-fullwidth">
@@ -76,14 +76,14 @@
                                 </div>
                             </th>
                         </tr>
-                        
+
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 
-  <div class="column">
+    <div class="column">
         <div class="columns is-mobile is-centered">
             <div class="column">
                 <table class="table is-striped is-hoverable is-fullwidth">
@@ -115,7 +115,7 @@
                                 </div>
                             </th>
                         </tr>
-                        
+
                     </tbody>
                 </table>
             </div>
@@ -123,11 +123,48 @@
     </div>
 </div>
 {{else}}
-  <div class="column">
-        <div class="columns is-mobile is-centered">
-            <div class="column">
-                    <p>You need to sign in first!</p>
+<div class="column">
+    <div class="columns is-mobile is-centered">
+        <div class="column">
+            <p>You need to sign in first!</p>
         </div>
     </div>
 </div>
 {{/if}}
+
+
+<!-- The Modal -->
+<div id="add-movie-modal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+
+        <div class="field">
+            <p class="control has-icons-left has-icons-right">
+                <input class="input" id="movie-title" type="text" placeholder="Movie Title">
+                <span class="icon is-small is-left">
+                    <i class="fas fa-film"></i>
+                </span>
+            </p>
+
+        </div>
+
+        <div class="field">
+            <p class="control has-icons-left has-icons-right">
+                <input class="input" id="movie-description" type="text" placeholder="Description">
+                <span class="icon is-small is-left">
+                    <i class="fas fa-pencil-alt"></i>
+                </span>
+            </p>
+        </div>
+
+        <div class="buttons">
+            <button class="button is-primary" type="submit">Add Movie</button>
+        </div>
+        </form>
+    </div>
+
+</div>
+
+<script src="/javascript/addMovie.js"></script>
