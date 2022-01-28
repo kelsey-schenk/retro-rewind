@@ -34,9 +34,6 @@ async function addMovieFormHandler(event) {
 const title = document.querySelector('#movie-title').value.trim();
 const description = document.querySelector('#movie-description').value.trim();
 
-console.log(title);
-console.log(description);
-
 if (title)  {
     if (description) {
         const response = await fetch('/api/movies', {

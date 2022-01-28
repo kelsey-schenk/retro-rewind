@@ -40,14 +40,21 @@ router.post('/', (req, res) => {
         "description": "Movie Description",
     }
     */
-    Movies.create(req.body)
-    .then((movie) => {
-        res.status(200).json(movie);
-    })
-    .catch((err) => {
-        console.log(err);
-        res.status(400).json(err);
-    });
+   if (req.session) {
+        Movies.create({
+            user_id: req.session.user_id,
+            title: req.body.title,
+            description: req.body.description
+        })
+        .then((movie) => {
+            res.status(200).json(movie);
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(400).json(err);
+        });
+   }
+
 });
 
 router.put('/:id', (req, res) => {
