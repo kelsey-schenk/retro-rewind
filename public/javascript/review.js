@@ -28,7 +28,7 @@ window.onclick = function(event) {
 //-----------------------------------
 // Add Review Logic
 //-----------------------------------
-async function loginFormHandler(event) {
+async function addReviewFormHandler(event) {
   event.preventDefault();
 
 const rating = document.querySelector('#rating-selection').value.trim();
@@ -61,4 +61,4 @@ if (email && password) {
 }
 
 
-document.querySelector('.review-form').addEventListener('submit', loginFormHandler);
+document.querySelector('.review-form').addEventListener('submit', addReviewFormHandler);

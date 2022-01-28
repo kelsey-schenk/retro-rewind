@@ -28,14 +28,12 @@ window.onclick = function(event) {
 //-----------------------------------
 // Add Review Logic
 //-----------------------------------
-async function loginFormHandler(event) {
+async function addMovieFormHandler(event) {
   event.preventDefault();
 
-const rating = document.querySelector('#rating-selection').value.trim();
-const title = document.querySelector('#review-title').value.trim();
-const description = document.querySelector('#review-description').value.trim();
+const title = document.querySelector('#movie-title').value.trim();
+const description = document.querySelector('#movie-description').value.trim();
 
-console.log(rating);
 console.log(title);
 console.log(description);
 
@@ -61,4 +59,4 @@ if (email && password) {
 }
 
 
-document.querySelector('.movie-form').addEventListener('submit', loginFormHandler);
+document.querySelector('.movie-form').addEventListener('submit', addMovieFormHandler);
