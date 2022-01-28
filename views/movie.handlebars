@@ -26,7 +26,7 @@
             <h1 class="movieTitle">Rating</h1>
 
             <div class="buttons">
-                <button class="button is-primary" id="myBtn">Add Review</button>
+                <button class="button is-primary" id="addReview">Add Review</button>
             </div>
         </div>
 
@@ -35,34 +35,35 @@
 
 
 <!-- The Modal -->
-<div id="myModal" class="modal">
+<div id="review-modal" class="modal">
 
     <!-- Modal content -->
     <div class="modal-content">
         <span class="close">&times;</span>
 
-        <div class="field has-addons">
-            <div class="control is-expanded">
-                <div class="select is-fullwidth">
-                    <select name="rating">
-                        <option value="1 Star">1 Star</option>
-                        <option value="2 Star">2 Star</option>
-                        <option value="3 Star">3 Star</option>
-                        <option value="4 Star">4 Star</option>
-                        <option value="5 Star">5 Star</option>
-                    </select>
+        <form class="user-form review-form">
+            <div class="field has-addons">
+                <div class="control is-expanded">
+                    <div class="select is-fullwidth">
+                        <select name="rating" id="rating-selection">
+                            <option value="" disabled selected>Select Rating</option>
+                            <option value="1 Star">1 Star</option>
+                            <option value="2 Star">2 Star</option>
+                            <option value="3 Star">3 Star</option>
+                            <option value="4 Star">4 Star</option>
+                            <option value="5 Star">5 Star</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="control">
+                    <button type="submit" class="button is-primary">Choose</button>
                 </div>
             </div>
 
-            <div class="control">
-                <button type="submit" class="button is-primary">Choose</button>
-            </div>
-        </div>
-
-        <form class="user-form signup-form">
             <div class="field">
                 <p class="control has-icons-left has-icons-right">
-                    <input class="input" id="username-signup" type="text" placeholder="Review Title">
+                    <input class="input" id="review-title" type="text" placeholder="Review Title">
                     <span class="icon is-small is-left">
                         <i class="far fa-edit"></i>
                     </span>
@@ -72,7 +73,7 @@
 
             <div class="field">
                 <p class="control has-icons-left has-icons-right">
-                    <input class="input" id="email-signup" type="email" placeholder="Description">
+                    <input class="input" id="review-description" type="text" placeholder="Description">
                     <span class="icon is-small is-left">
                         <i class="far fa-file-alt"></i>
                     </span>
@@ -88,4 +89,4 @@
 
 </div>
 
-<script src="/javascript/BaseModal.js"></script>
+<script src="/javascript/review.js"></script>
