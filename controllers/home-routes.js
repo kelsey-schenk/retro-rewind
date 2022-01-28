@@ -4,7 +4,10 @@ const { User, Reviews, Rentals, Movie } = require('../models');
 
 //Index Links
 router.get('/', (req, res) => {
-  res.render('homepage');
+  console.log(req.session);
+  res.render('homepage', {
+    loggedIn: req.session.loggedIn
+  });
 });
 
 router.get('/login', (req, res) => {
@@ -16,7 +19,9 @@ router.get('/signup', (req, res) => {
 });
 
 router.get('/dashboard', (req, res) => {
-  res.render('dashboard');
+  res.render('dashboard', {
+    loggedIn: req.session.loggedIn
+  });
 });
 
 router.get('/movie', (req, res) => {
@@ -37,11 +42,11 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-router.get('/', (req, res) => {
-  console.log(req.session);
+// router.get('/', (req, res) => {
+//   console.log(req.session);
 
-  // other logic...
-});
+//   // other logic...
+// });
 
 
 module.exports = router;
