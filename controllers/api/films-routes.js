@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Review, Rentals, Movies } = require('../../models')
+const { User, Review, Rentals, Movies, Movie } = require('../../models')
 
 router.get('/', (req, res) => {
     Movies.findAll(
@@ -55,6 +55,28 @@ router.post('/', (req, res) => {
     .catch((err) => {
         console.log(err);
         res.status(400).json(err);
+    });
+});
+
+
+
+
+router.delete('/:id', (req, res) => {
+    // update product data
+    Movie.destroy({
+    where: {
+        id: req.params.id,
+        },
+    })
+    .then(moviesData => {
+        if(!moviesData) {
+            res.status(404).json({ message: 'No movie found with that id' });
+        }
+        res.json(moviesData);
+    })
+    .catch((err) => {
+        // console.log(err);
+        res.status(500).json(err);
     });
 });
 
