@@ -37,24 +37,27 @@ const description = document.querySelector('#movie-description').value.trim();
 console.log(title);
 console.log(description);
 
-/*
-if (email && password) {
-  const response = await fetch('/api/users/login', {
-    method: 'post',
-    body: JSON.stringify({
-      email,
-      password
-    }),
-    headers: { 'Content-Type': 'application/json' }
-  });
-
-  if (response.ok) {
-    document.location.replace('/');
-  } else {
-    alert(response.statusText);
+if (title)  {
+    if (description) {
+        const response = await fetch('/api/movies', {
+            method: 'POST',
+            body: JSON.stringify({
+              title,
+              description
+            }),
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+      
+          if (response.ok) {
+              modal.style.display = "none"
+              document.location.reload();
+          } else {
+            alert(response.statusText);
+          }
+    }
   }
-}
-*/
 
 }
 

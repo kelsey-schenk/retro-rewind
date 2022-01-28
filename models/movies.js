@@ -27,7 +27,6 @@ Movies.init(
         rating: {
             type: DataTypes.STRING,
             defaultValue: "5"
-            //allowNull: false,
         },
         description: {
             type: DataTypes.STRING,
