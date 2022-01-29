@@ -3,7 +3,6 @@ const sequelize = require('../config/connection');
 const { User, Reviews, Rentals, Movie, Movies } = require('../models');
 
 //Index Links
-
 router.get('/', (req, res) => {
   console.log(req.session);
   res.render('homepage', {
@@ -27,10 +26,6 @@ router.get('/dashboard', (req, res) => {
 });
 */
 
-router.get('/movie', (req, res) => {
-  res.render('movie');
-});
-
 //USER SESSION
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
@@ -41,6 +36,7 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+//Populate Movies Page with each movie
 router.get('/searchMovies', (req, res) => {
   Movies.findAll({
     attributes: ['id', 'title', 'rating', 'description', 'status', 'user_id'],
@@ -60,7 +56,6 @@ router.get('/searchMovies', (req, res) => {
     });
 });
 
-
 router.get('/dashboard', (req, res) => {
   Movies.findAll({
     attributes: ['id', 'title', 'rating', 'description', 'status', 'user_id'],
@@ -75,6 +70,31 @@ router.get('/dashboard', (req, res) => {
         movies,
         loggedIn: req.session.loggedIn
       });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+//Populate Single Movie Page
+router.get('/movie/:id', (req, res) => {
+  Movies.findOne({
+    where: {
+      id: req.params.id
+    },
+    attributes: ['id', 'title', 'rating', 'description', 'status', 'user_id'],
+  })
+    .then(dbMovieData => {
+      if (!dbMovieData) {
+        res.status(404).json({ message: 'No post found with this id' });
+        return;
+      }
+
+      const movie = dbMovieData.get({ plain: true });
+      console.log(movie)
+      // pass data to template
+      res.render('movie', { movie });
     })
     .catch(err => {
       console.log(err);
