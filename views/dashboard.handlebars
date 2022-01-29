@@ -16,9 +16,10 @@
                     </thead>
 
                     <tbody>
+                        {{#each movies}}
                         <tr>
                             <th>
-                                Free Willy
+                                {{title}}
                             </th>
                             <th>
                                 <div class="tableButton">
@@ -26,18 +27,7 @@
                                 </div>
                             </th>
                         </tr>
-
-                        <tr>
-                            <th>
-                                The Goonies
-                            </th>
-                            <th>
-                                <div class="tableButton">
-                                    <button class="button is-danger">Remove</button>
-                                </div>
-                            </th>
-                        </tr>
-
+                        {{/each}}
                     </tbody>
                 </table>
             </div>
