@@ -11,7 +11,6 @@ router.get('/', (req, res) => {
   });
 });
 
-
 router.get('/login', (req, res) => {
   res.render('login');
 });
@@ -30,15 +29,6 @@ router.get('/movie', (req, res) => {
   res.render('movie');
 });
 
-/*
-router.get('/searchMovies', (req, res) => {
-  res.render('searchMovies', {
-    title: 'Handlebars Docs',
-    description: 'movie description'
-  });
-});
-*/
-
 //USER SESSION
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
@@ -55,11 +45,10 @@ router.get('/searchMovies', (req, res) => {
     
   })
     .then(dbPostData => {
-      // pass a single post object into the homepage template
-      const posts = dbPostData.map(post => post.get({ plain: true }));
-      console.log(posts[0])
+      const movies = dbPostData.map(movie => movie.get({ plain: true }));
+
       res.render('searchMovies', {
-        posts
+        movies
         //loggedIn: req.session.loggedIn
       });
     })
