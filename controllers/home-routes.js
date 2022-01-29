@@ -25,7 +25,9 @@ router.get('/dashboard', (req, res) => {
 });
 
 router.get('/movie', (req, res) => {
-  res.render('movie');
+  res.render('movie', {
+    loggedIn: req.session.loggedIn
+  });
 });
 
 router.get('/searchMovies', (req, res) => {

@@ -26,26 +26,27 @@
             <h1 class="movieTitle">Rating</h1>
 
              <div class="buttons">
-                <button class="button is-primary" id="myBtn">Add Review</button>
+                <button class="button is-primary" id="addReview">Add Review</button>
             </div>
         </div>
         
     </div>
 </div>
 
+{{#if loggedIn}}
 
-<!-- The Modal -->
+{{> reviews }}
+
+{{else}}
 <div id="myModal" class="modal">
 
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
-    <p>Some text in the Modal..</p>
+    <p>You must be logged in to leave a review!</p>
   </div>
 
 </div>
+
 <script src="/javascript/BaseModal.js"></script>
-
-    
-
-    
+{{/if}}
