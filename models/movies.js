@@ -13,7 +13,7 @@ Movies.init(
         },
         user_id: {
             type: DataTypes.INTEGER,
-            //allowNull: false,
+            allowNull: false,
             references: {
                 model: 'user',
                 key: 'id'
@@ -23,27 +23,18 @@ Movies.init(
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
-            validate: {
-                len: [1]
-            }
         },
         rating: {
             type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [1]
-            }
+            defaultValue: "5"
         },
         description: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                len: [20]
-            }
         },
         status: {
             type: DataTypes.STRING,
-        
+            defaultValue: "available"
         }
     },
     {

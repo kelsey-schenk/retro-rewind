@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { User, Reviews, Rentals, Movie } = require('../models');
+const { User, Reviews, Rentals, Movie, Movies } = require('../models');
 
 //Index Links
+
 router.get('/', (req, res) => {
   console.log(req.session);
   res.render('homepage', {
@@ -28,10 +29,6 @@ router.get('/movie', (req, res) => {
   res.render('movie');
 });
 
-router.get('/searchMovies', (req, res) => {
-  res.render('searchMovies');
-});
-
 //USER SESSION
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
@@ -42,11 +39,22 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-// router.get('/', (req, res) => {
-//   console.log(req.session);
+router.get('/searchMovies', (req, res) => {
+  Movies.findAll({
+    attributes: ['id', 'title', 'rating', 'description', 'status', 'user_id'],
+    
+  })
+    .then(dbPostData => {
+      const movies = dbPostData.map(movie => movie.get({ plain: true }));
 
-//   // other logic...
-// });
-
-
+      res.render('searchMovies', {
+        movies
+        //loggedIn: req.session.loggedIn
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 module.exports = router;
