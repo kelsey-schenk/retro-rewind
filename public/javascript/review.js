@@ -55,9 +55,8 @@ if (email && password) {
   } else {
     alert(response.statusText);
   }
-}
+//}
 */
-
 }
 
 
