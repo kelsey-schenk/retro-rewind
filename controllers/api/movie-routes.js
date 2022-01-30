@@ -44,7 +44,8 @@ router.post('/', (req, res) => {
         Movies.create({
             user_id: req.session.user_id,
             title: req.body.title,
-            description: req.body.description
+            description: req.body.description,
+            rating: req.body.rating
         })
         .then((movie) => {
             res.status(200).json(movie);
