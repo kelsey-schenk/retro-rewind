@@ -102,4 +102,10 @@ router.get('/movie/:id', (req, res) => {
     });
 });
 
+router.get('/reviews', (req, res) => {
+  Reviews.findAll({
+    attributes
+  })
+})
+
 module.exports = router;
