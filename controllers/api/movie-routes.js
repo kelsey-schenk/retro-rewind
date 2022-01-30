@@ -32,30 +32,30 @@ router.get('/', (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
-    /* req.body should look like this...
-    {
-        "title": "Free Willy",
-        "rating": "PG",
-        "description": "Movie Description",
-    }
-    */
-   if (req.session) {
-        Movies.create({
-            user_id: req.session.user_id,
-            title: req.body.title,
-            description: req.body.description
-        })
-        .then((movie) => {
-            res.status(200).json(movie);
-        })
-        .catch((err) => {
-            console.log(err);
-            res.status(400).json(err);
-        });
-   }
+// router.post('/', (req, res) => {
+//     /* req.body should look like this...
+//     {
+//         "title": "Free Willy",
+//         "rating": "PG",
+//         "description": "Movie Description",
+//     }
+//     */
+//    if (req.session) {
+//         Movies.create({
+//             user_id: req.session.user_id,
+//             title: req.body.title,
+//             description: req.body.description
+//         })
+//         .then((movie) => {
+//             res.status(200).json(movie);
+//         })
+//         .catch((err) => {
+//             console.log(err);
+//             res.status(400).json(err);
+//         });
+//    }
 
-});
+// });
 
 router.put('/:id', (req, res) => {
     Movies.update(req.body, {
