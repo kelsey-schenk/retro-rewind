@@ -2,7 +2,7 @@
 <div class="columns">
     <div class="column">
         <div class="columns is-mobile is-centered">
-            <div class="column">
+            <div class="column moviesTable">
                 <table class="table is-striped is-hoverable is-fullwidth">
                     <thead>
                         <tr>
@@ -16,28 +16,18 @@
                     </thead>
 
                     <tbody>
+                        {{#each movies}}
                         <tr>
                             <th>
-                                Free Willy
+                                {{title}}
                             </th>
                             <th>
                                 <div class="tableButton">
-                                    <button class="button is-danger">Remove</button>
+                                    <button class="button is-danger" id="removeMovie" type="submit">Remove</button>
                                 </div>
                             </th>
                         </tr>
-
-                        <tr>
-                            <th>
-                                The Goonies
-                            </th>
-                            <th>
-                                <div class="tableButton">
-                                    <button class="button is-danger">Remove</button>
-                                </div>
-                            </th>
-                        </tr>
-
+                        {{/each}}
                     </tbody>
                 </table>
             </div>
@@ -182,3 +172,4 @@
 </div>
 
 <script src="/javascript/addMovie.js"></script>
+<script src="/javascript/removeMovie.js"></script>

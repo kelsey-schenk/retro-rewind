@@ -26,7 +26,7 @@ window.onclick = function(event) {
 }
 
 //-----------------------------------
-// Add Review Logic
+// Add Movie Logic
 //-----------------------------------
 async function addMovieFormHandler(event) {
   event.preventDefault();
