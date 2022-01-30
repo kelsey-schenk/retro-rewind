@@ -109,9 +109,14 @@ router.get('/reviews', (req, res) => {
     .then(dbPostData => {
       const reviews = dbPostData.map(review => review.get({ plain:true }));
       console.log(reviews)
-      res.render('dashboard', {
-        reviews
-      })
+      res.render('reviews', {
+        reviews,
+        loggedIn: req.session.loggedIn
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
     })
 })
 
