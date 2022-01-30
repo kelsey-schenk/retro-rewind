@@ -39,8 +39,8 @@ console.log(rating);
 console.log(title);
 console.log(description);
 
-
-//if (email && password) {
+/*
+if (email && password) {
   const response = await fetch('/api/users/login', {
     method: 'post',
     body: JSON.stringify({
@@ -56,7 +56,7 @@ console.log(description);
     alert(response.statusText);
   }
 //}
-
+*/
 }
 
 
