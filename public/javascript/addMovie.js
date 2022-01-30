@@ -33,6 +33,7 @@ async function addMovieFormHandler(event) {
 
 const title = document.querySelector('#movie-title').value.trim();
 const description = document.querySelector('#movie-description').value.trim();
+const rating = document.querySelector('#rating-selection').value.trim();
 
 if (title)  {
     if (description) {
@@ -40,7 +41,8 @@ if (title)  {
             method: 'POST',
             body: JSON.stringify({
               title,
-              description
+              description,
+              rating
             }),
             headers: {
               'Content-Type': 'application/json'
