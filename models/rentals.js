@@ -24,18 +24,6 @@ Rentals.init(
                 model: 'movies',
                 key: 'id'
             }
-        },
-        date_out: {
-            type: DataTypes.DATE,
-            validate: {
-
-            }
-        },
-        date_in: {
-            type: DataTypes.DATE,
-            validate: {
-
-            }
         }
     },
     {

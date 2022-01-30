@@ -22,16 +22,22 @@
 
     <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
+        
+
+       
+
+        {{#if loggedIn}}
+        <a class="navbar-item" href="/dashboard">
+            Dashboard
+        </a>
+        {{else}}
         <a class="navbar-item" href="/">
             Home
         </a>
+        {{/if}}
 
-        <a class="navbar-item" href="/searchMovies">
+         <a class="navbar-item" href="/searchMovies">
             Movies
-        </a>
-
-        <a class="navbar-item" href="/dashboard">
-            Dashboard
         </a>
         </div>
 
