@@ -104,8 +104,15 @@ router.get('/movie/:id', (req, res) => {
 
 router.get('/reviews', (req, res) => {
   Reviews.findAll({
-    attributes
+    attributes: ['id', 'score', 'review_title', 'review_text', 'user_id' ],
   })
+    .then(dbPostData => {
+      const reviews = dbPostData.map(review => review.get({ plain:true }));
+      console.log(reviews)
+      res.render('dashboard', {
+        reviews
+      })
+    })
 })
 
 module.exports = router;
