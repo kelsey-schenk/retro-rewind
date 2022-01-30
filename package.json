@@ -17,7 +17,8 @@
   },
   "scripts": {
     "watch": "nodemon",
-    "start": "node server.js"
+    "start": "node server.js",
+    "seeds": "node seeds/index.js"
   },
   "name": "retro-rewind",
   "description": "",
