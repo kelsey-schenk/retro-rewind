@@ -11,7 +11,7 @@ User.hasMany(Review, {
 
 Movies.belongsTo(User, {
   foreignKey: 'user_id',
-  onDelete: 'SET NULL'
+  onDelete: 'cascade'
 });
 
 // This is where it starts to not line up so cleanly

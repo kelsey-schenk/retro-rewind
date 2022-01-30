@@ -1,6 +1,6 @@
 const { Movies } = require('../models');
 
-const postdata = [
+const MoviesData = [
   {
 		title: "Free Willy",
 		rating: "5",
@@ -21,13 +21,6 @@ const postdata = [
 		description: "While in Paris, a group of young kids try to find one of their friends a new mom while stopping his dad from marrying a conniving businesswoman who doesn't love him and hates kids.",
 		status: "available",
 		user_id: 2
-  },
-  {
-		title: "Free Willy",
-		rating: "5",
-		description: "A boy and a whale",
-		status: "available",
-		user_id: 3
   },
   {
 		title: "Star Wars: Episode IV - A New Hope",
@@ -52,6 +45,6 @@ const postdata = [
   }
 ];
 
-const seedMovies = () => Post.bulkCreate(MoviesData);
+const seedMovies = () => Movies.bulkCreate(MoviesData);
 
 module.exports = seedMovies;
