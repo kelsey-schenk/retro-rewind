@@ -18,14 +18,6 @@ router.get('/signup', (req, res) => {
   res.render('signup');
 });
 
-/*
-router.get('/dashboard', (req, res) => {
-  res.render('dashboard', {
-    loggedIn: req.session.loggedIn
-  });
-});
-*/
-
 //USER SESSION
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
@@ -94,10 +86,12 @@ router.get('/movie/:id', (req, res) => {
       {
         model: Reviews,
         attributes: ['id', 'review_title', 'review_text', 'movies_id', 'user_id'],
+        /*
         include: {
           model: User,
           attributes: ['username']
         }
+        */
       },
       {
         model: User,
@@ -115,25 +109,6 @@ router.get('/movie/:id', (req, res) => {
       console.log(movie)
       // pass data to template
       res.render('movie', { movie });
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-
-// Display reviews for single movie
-router.get('/movie/:id', (req, res) => {
-  Reviews.findAll({
-    attributes: ['id', 'score', 'review_title', 'review_text', 'user_id' ],
-  })
-    .then(dbPostData => {
-      const reviews = dbPostData.map(review => review.get({ plain: true }));
-      console.log(reviews)
-      res.render('reviews', {
-        reviews,
-        loggedIn: req.session.loggedIn
-      });
     })
     .catch(err => {
       console.log(err);
