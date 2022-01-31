@@ -1,9 +1,9 @@
 const router = require('express').Router();
-const { Review } = require('../../models');
+const { Reviews } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.get('/', (req, res) => {
-    Review.findAll()
+    Reviews.findAll()
       .then(dbReviewsData => res.json(dbReviewsData))
       .catch(err => {
         console.log(err);
@@ -30,7 +30,7 @@ router.get('/', (req, res) => {
 
 
 router.post('/', (req, res) => {
-    Review.create({
+    Reviews.create({
         review_title: req.body.review_title,
         review_text: req.body.review_text,
         user_id: req.body.user_id,
@@ -44,7 +44,7 @@ router.post('/', (req, res) => {
 });
 
 router.delete('/:id', withAuth, (req, res) => {
-    Review.destroy({
+    Reviews.destroy({
     where: {
         id: req.params.id
     }
