@@ -1,10 +1,8 @@
 var btn = document.getElementById("checkOut");
-var checkoutStatus = "taken";
+var status = 1;
 const movie_id = window.location.toString().split('/')[
     window.location.toString().split('/').length -1 
 ];
-
-
 
 //API call to update Movie & Rental for Checkout
 btn.onclick = function() {
@@ -35,7 +33,7 @@ async function updateMovie(event) {
     const response = await fetch(`/api/movies/${movie_id}`, {
         method: 'PUT',
         body: JSON.stringify({
-          checkoutStatus
+          status
         }),
         headers: {
           'Content-Type': 'application/json'
@@ -46,6 +44,7 @@ async function updateMovie(event) {
           btn.style.visibility = 'hidden';
           document.location.reload();
       } else {
+        console.log('no')
         alert(response.statusText);
       }
 }

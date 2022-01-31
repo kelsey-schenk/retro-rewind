@@ -9,7 +9,12 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const app = express();
 const PORT = process.env.PORT || 3001;
 const exphbs = require('express-handlebars');
-const hbs = exphbs.create({});
+var hbs = exphbs.create({
+  // Specify helpers which are only registered on this instance.
+  helpers: {
+    eq: function () { return (a, b) => a == b; },
+  }
+});
 
 const sess = {
   secret: 'Super secret secret',
