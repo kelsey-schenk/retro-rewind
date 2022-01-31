@@ -1,15 +1,17 @@
 var btn = document.getElementById("checkOut");
-var status = 1;
+var status = 0;
 const movie_id = window.location.toString().split('/')[
     window.location.toString().split('/').length -1 
 ];
 
 //API call to update Movie & Rental for Checkout
 btn.onclick = function() {
+    btn.style.visibility = 'hidden';
     createRental();
 }
 
 async function createRental(event) {
+
     const response = await fetch('/api/rentals', {
         method: 'POST',
         body: JSON.stringify({
@@ -29,7 +31,7 @@ async function createRental(event) {
 }
 
 async function updateMovie(event) {
-
+    
     const response = await fetch(`/api/movies/${movie_id}`, {
         method: 'PUT',
         body: JSON.stringify({
@@ -41,7 +43,8 @@ async function updateMovie(event) {
       });
   
       if (response.ok) {
-          btn.style.visibility = 'hidden';
+          
+          console.log("checked Out")
           document.location.reload();
       } else {
         console.log('no')
