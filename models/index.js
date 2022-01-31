@@ -14,6 +14,19 @@ Movies.belongsTo(User, {
   onDelete: 'cascade'
 });
 
+Reviews.belongsTo(User, {
+  foreignKey: 'user_id',
+  onDelete: 'SET NULL'
+});
+
+Reviews.belongsTo(Movies, {
+  foreignKey: 'movies_id',
+  onDelete: 'cascade'
+});
+
+Movies.hasMany(Reviews, {
+  foreignKey: 'movies_id'
+});
 // This is where it starts to not line up so cleanly
 
 
