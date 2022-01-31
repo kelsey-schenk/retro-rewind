@@ -2,10 +2,10 @@ const router = require('express').Router();
 const { User, Review, Rentals, Movies } = require('../../models')
 
 router.get('/', (req, res) => {
-    Movies.findAll({
-        attributes: ['id', 'title', 'rating', 'description', 'status', 'user_id'],
+    Rentals.findAll({
+        attributes: ['id', 'user_id', 'movie_id'],
     })
-      .then(dbMoviesData => res.json(dbMoviesData))
+      .then(dbRentalsData => res.json(dbRentalsData))
       .catch(err => {
         console.log(err);
         res.status(500).json(err);
@@ -13,18 +13,18 @@ router.get('/', (req, res) => {
   });
 
   router.get('/:id', (req, res) => {
-    Movies.findOne({
-        attributes: ['id', 'title', 'rating', 'description', 'status', 'user_id'],
+    Rentals.findOne({
+        attributes: ['id', 'user_id', 'movie_id'],
         where: {
             id: req.params.id
         },
     })
-    .then(dbMoviesData =>{
-        if (!dbMoviesData) {
+    .then(dbRentalsData =>{
+        if (!dbRentalsData) {
             res.status(404).json({ message: 'No movie found with this id' });
             return;
         }
-        res.json(dbMoviesData);
+        res.json(dbRentalsData);
     })
     .catch(err => {
         console.log(err);
@@ -33,19 +33,10 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    /* req.body should look like this...
-    {
-        "title": "Free Willy",
-        "rating": "PG",
-        "description": "Movie Description",
-    }
-    */
    if (req.session) {
-        Movies.create({
+        Rentals.create({
             user_id: req.session.user_id,
-            title: req.body.title,
-            description: req.body.description,
-            rating: req.body.rating
+            movie_id: req.body.movie_id,
         })
         .then((movie) => {
             res.status(200).json(movie);
@@ -59,22 +50,18 @@ router.post('/', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-    Movies.update(
-        {
-          checkoutStatus: req.body.status
-        },
-        {
-          where: {
+    Rentals.update(req.body, {
+        individualHooks: true,
+        where: {
             id: req.params.id
-          }
         }
-      )
-    .then(dbMoviesData => {
-        if (!dbMoviesData[0]) {
+    })
+    .then(dbRentalsData => {
+        if (!dbRentalsData[0]) {
             res.status(404).json({ message: 'No movie found with this id'});
             return;
         }
-        res.json(dbMoviesData);
+        res.json(dbRentalsData);
     })
     .catch(err => {
         console.log(err);
@@ -85,16 +72,16 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
     // update product data
-    Movies.destroy({
+    Rentals.destroy({
     where: {
         id: req.params.id,
         },
     })
-    .then(moviesData => {
-        if(!moviesData) {
-            res.status(404).json({ message: 'No movie found with that id' });
+    .then(dbRentalsData => {
+        if(!dbRentalsData) {
+            res.status(404).json({ message: 'No rental found with that id' });
         }
-        res.json(moviesData);
+        res.json(dbRentalsData);
     })
     .catch((err) => {
         // console.log(err);
