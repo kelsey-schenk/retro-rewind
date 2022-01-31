@@ -57,24 +57,52 @@ router.get('/searchMovies', (req, res) => {
 });
 
 router.get('/dashboard', (req, res) => {
+  //Fetch User Movies
   Movies.findAll({
     attributes: ['id', 'title', 'rating', 'description', 'status', 'user_id'],
     where: {
       user_id: req.session.user_id
     },
   })
-    .then(dbPostData => {
-      const movies = dbPostData.map(movie => movie.get({ plain: true }));
-      console.log(movies)
-      res.render('dashboard', {
-        movies,
-        loggedIn: req.session.loggedIn
-      });
+    .then(dbMovieData => {
+      const movies = dbMovieData.map(movie => movie.get({ plain: true }));
+
+      //Fetch User Rentals
+      Rentals.findAll({
+        attributes: ['id', 'user_id'],
+        where: {
+          user_id: req.session.user_id
+        },
+        include: [
+          {
+            model: Movies,
+            attributes: ['title']
+          }
+        ]
+      })
+        .then(dbRentalData => {
+          const rentals = dbRentalData.map(rental => rental.get({ plain: true }));
+          console.log(rentals);
+          res.render('dashboard', {
+            rentals,
+            movies,
+            loggedIn: req.session.loggedIn
+          });
+        })
+        .catch(err => {
+          console.log(err);
+          res.status(500).json(err);
+        });
+
+
+
+
     })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
+    
 });
 
 //Populate Single Movie Page

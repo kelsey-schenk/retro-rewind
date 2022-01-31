@@ -4,6 +4,12 @@ const { User, Review, Rentals, Movies } = require('../../models')
 router.get('/', (req, res) => {
     Rentals.findAll({
         attributes: ['id', 'user_id', 'movie_id'],
+        include: [
+        {
+            model: Movies,
+            attributes: ['title']
+        }
+        ]
     })
       .then(dbRentalsData => res.json(dbRentalsData))
       .catch(err => {
