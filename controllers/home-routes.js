@@ -122,7 +122,10 @@ router.get('/movie/:id', (req, res) => {
       const movie = dbMovieData.get({ plain: true });
       console.log(movie)
       // pass data to template
-      res.render('movie', { movie });
+      res.render('movie', { 
+      movie, 
+      loggedIn: req.session.loggedIn
+      });
     })
     .catch(err => {
       console.log(err);
