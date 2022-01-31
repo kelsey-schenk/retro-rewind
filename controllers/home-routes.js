@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { User, Reviews, Rentals, Movie, Movies } = require('../models');
+const { User, Reviews, Rentals, Movies } = require('../models');
 
 //Index Links
 router.get('/', (req, res) => {
@@ -83,7 +83,27 @@ router.get('/movie/:id', (req, res) => {
     where: {
       id: req.params.id
     },
-    attributes: ['id', 'title', 'rating', 'description', 'status', 'user_id'],
+    attributes: ['id', 
+    'title', 
+    'rating', 
+    'description', 
+    'status' 
+    // 'user_id'
+    ],
+    include: [
+      {
+        model: Reviews,
+        attributes: ['id', 'review_title', 'review_text', 'movies_id', 'user_id'],
+        include: {
+          model: User,
+          attributes: ['username']
+        }
+      },
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
   })
     .then(dbMovieData => {
       if (!dbMovieData) {
