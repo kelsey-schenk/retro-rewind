@@ -32,8 +32,8 @@ Movies.init(
             allowNull: false,
         },
         status: {
-            type: DataTypes.INTEGER,
-            defaultValue: 0
+            type: DataTypes.STRING,
+            defaultValue: "available"
         }
     },
     {

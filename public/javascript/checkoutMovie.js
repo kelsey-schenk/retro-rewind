@@ -1,5 +1,5 @@
 var btn = document.getElementById("checkOut");
-var status = 0;
+var status = "taken";
 const movie_id = window.location.toString().split('/')[
     window.location.toString().split('/').length -1 
 ];
