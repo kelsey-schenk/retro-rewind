@@ -14,6 +14,12 @@ Movies.belongsTo(User, {
   onDelete: 'cascade'
 });
 
+Rentals.belongsTo(Movies, {
+  foreignKey: 'movie_id'
+});
+
+
+
 // This is where it starts to not line up so cleanly
 
 

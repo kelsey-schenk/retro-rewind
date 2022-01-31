@@ -25,9 +25,11 @@
                 <button class="button is-primary" id="addReview">Add Review</button>
             </div>
 
+            {{#ifEquals movie.status "available" }}
             <div class="buttons">
                 <button class="button is-info" id="checkOut" type="submit">Check Out</button>
             </div>
+            {{/ifEquals}}
         </div>
 
     </div>
@@ -90,4 +92,6 @@
 </div>
 
 <script src="/javascript/review.js"></script>
+{{#ifEquals movie.status "available" }}
 <script src="/javascript/checkoutMovie.js"></script>
+{{/ifEquals}}
