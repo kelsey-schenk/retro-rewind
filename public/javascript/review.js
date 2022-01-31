@@ -31,13 +31,43 @@ window.onclick = function(event) {
 async function addReviewFormHandler(event) {
   event.preventDefault();
 
-const rating = document.querySelector('#rating-selection').value.trim();
-const title = document.querySelector('#review-title').value.trim();
-const description = document.querySelector('#review-description').value.trim();
+const score = document.querySelector('#score-selection').value.split(' ')[
+  document.querySelector('#score-selection').value.split(' ').length - 2
+  ];
+const review_title = document.querySelector('#review-title').value.trim();
+const review_text = document.querySelector('#review-description').value.trim();
+const movies_id = window.location.toString().split('/')[
+  window.location.toString().split('/').length - 1
+];
 
-console.log(rating);
-console.log(title);
-console.log(description);
+console.log(score);
+console.log(review_title);
+console.log(review_text);
+console.log(movies_id);
+
+if (score && review_title && review_text)  {
+  const response = await fetch('/api/reviews', {
+      method: 'POST',
+      body: JSON.stringify({
+        movies_id,
+        score,
+        review_title,
+        review_text,
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (response.ok) {
+        modal.style.display = "none"
+        document.location.reload();
+    } else {
+      alert(response.statusText);
+    }
+  }
+}
+
 
 /*
 if (email && password) {
@@ -55,10 +85,8 @@ if (email && password) {
   } else {
     alert(response.statusText);
   }
-}
+//}
 */
-
-}
 
 
 document.querySelector('.review-form').addEventListener('submit', addReviewFormHandler);

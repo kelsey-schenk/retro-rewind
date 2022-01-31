@@ -39,9 +39,9 @@ Reviews.init(
                 model: 'movies',
                 key: 'id'
             }
-        },
-        rating_provided: {
-            type: DataTypes.INTEGER
+        // },
+        // rating_provided: {
+        //     type: DataTypes.INTEGER
             // what else here?
         }
     },

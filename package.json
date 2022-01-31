@@ -35,6 +35,8 @@
   },
   "homepage": "https://github.com/kelsey-schenk/retro-rewind#readme",
   "devDependencies": {
+    "jest": "^27.4.7",
     "nodemon": "^2.0.15"
-  }
+  },
+  "keywords": []
 }

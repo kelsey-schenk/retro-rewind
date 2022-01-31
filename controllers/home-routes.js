@@ -102,4 +102,23 @@ router.get('/movie/:id', (req, res) => {
     });
 });
 
+// Display reviews for single movie
+router.get('/movie/:id', (req, res) => {
+  Reviews.findAll({
+    attributes: ['id', 'score', 'review_title', 'review_text', 'user_id' ],
+  })
+    .then(dbPostData => {
+      const reviews = dbPostData.map(review => review.get({ plain: true }));
+      console.log(reviews)
+      res.render('reviews', {
+        reviews,
+        loggedIn: req.session.loggedIn
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 module.exports = router;
