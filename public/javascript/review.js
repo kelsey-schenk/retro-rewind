@@ -31,13 +31,43 @@ window.onclick = function(event) {
 async function addReviewFormHandler(event) {
   event.preventDefault();
 
-const rating = document.querySelector('#rating-selection').value.trim();
-const title = document.querySelector('#review-title').value.trim();
-const description = document.querySelector('#review-description').value.trim();
+const score = document.querySelector('#score-selection').value.trim();
+const review_title = document.querySelector('#review-title').value.trim();
+const review_text = document.querySelector('#review-description').value.trim();
+const movie_id = window.location.toString().split('/')[
+  window.location.toString().split('/').length - 1
+];
 
-console.log(rating);
-console.log(title);
-console.log(description);
+console.log(score);
+console.log(review_title);
+console.log(review_text);
+
+if (title)  {
+    if (review_description) {
+        const response = await fetch('/api/reviews', {
+            method: 'POST',
+            body: JSON.stringify({
+              movie_id,
+              score,
+              review_title,
+              review_text,
+            }),
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+      
+          if (response.ok) {
+              modal.style.display = "none"
+              document.location.reload();
+          } else {
+            alert(response.statusText);
+          }
+    }
+  }
+
+}
+
 
 /*
 if (email && password) {
@@ -57,7 +87,6 @@ if (email && password) {
   }
 //}
 */
-}
 
 
 document.querySelector('.review-form').addEventListener('submit', addReviewFormHandler);

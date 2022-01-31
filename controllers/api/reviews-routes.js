@@ -1,27 +1,36 @@
 const router = require('express').Router();
-const { Reviews } = require('../../models');
+const { Review } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.get('/', (req, res) => {
-    Reviews.findAll({
-        attributes: ['id', 'post_url', 'title', 'review', 'created_at'],
-        include: [
-          {
-            model: User,
-            attributes: ['username']
-          }
-        ]
-      })
-        .then(dbReviewsData => res.json(dbReviewsData))
-        .catch(err => {
+    Review.findAll()
+      .then(dbReviewsData => res.json(dbReviewsData))
+      .catch(err => {
         console.log(err);
         res.status(500).json(err);
-    });
+      });
 });
+
+// router.get('/', (req, res) => {
+//     Reviews.findAll({
+//         attributes: ['id', 'post_url', 'title', 'review', 'created_at'],
+//         include: [
+//           {
+//             model: User,
+//             attributes: ['username']
+//           }
+//         ]
+//       })
+//         .then(dbReviewsData => res.json(dbReviewsData))
+//         .catch(err => {
+//         console.log(err);
+//         res.status(500).json(err);
+//     });
+// });
 
 
 router.post('/', (req, res) => {
-    Reviews.create({
+    Review.create({
         review_title: req.body.review_title,
         review_text: req.body.review_text,
         user_id: req.body.user_id,
@@ -35,7 +44,7 @@ router.post('/', (req, res) => {
 });
 
 router.delete('/:id', withAuth, (req, res) => {
-    Reviews.destroy({
+    Review.destroy({
     where: {
         id: req.params.id
     }
