@@ -5,7 +5,7 @@ const Rentals = require('./rentals'); // not sure what this one would be similar
 const Reviews = require('./reviews'); // equivelent to comment from the module? Also 
 
 // create associations
-User.hasMany(Review, {
+User.hasMany(Reviews, {
   foreignKey: 'user_id'
 });
 
