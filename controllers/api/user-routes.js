@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Review, Rentals, Movie } = require('../../models');
+const { User, Reviews, Rentals, Movies } = require('../../models');
 
 // GET /api/users
 router.get('/', (req, res) => {
@@ -23,7 +23,7 @@ router.get('/:id', (req, res) => {
         /*
         include: [
             {
-                model: Movie,
+                model: Movies,
                 attributes: ['id', 'movie_id', 'title']
             },
             {

@@ -16,12 +16,10 @@ Movies.belongsTo(User, {
 
 Reviews.belongsTo(User, {
   foreignKey: 'user_id',
-  onDelete: 'SET NULL'
 });
 
 Reviews.belongsTo(Movies, {
   foreignKey: 'movies_id',
-  onDelete: 'cascade'
 });
 
 Movies.hasMany(Reviews, {
