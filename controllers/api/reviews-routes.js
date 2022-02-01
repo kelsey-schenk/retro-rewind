@@ -33,7 +33,7 @@ router.put('/:id', withAuth, (req, res) => {
       {
         review_title: req.body.new_title,
         review_text: req.body.new_text,
-        score: req.body_new_score
+        score: req.body.new_score
 
       },
       {

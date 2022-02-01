@@ -33,9 +33,13 @@ async function updateReviewFormHandler(event) {
 
     const new_title = review_title.value;
     const new_text = review_text.value;
-    const new_score = score.value;
+ 
+    const new_score = document.querySelector('#score-selection').value.split(' ')[
+        document.querySelector('#score-selection').value.split(' ').length - 2
+        ];
 
-
+    
+    console.log(new_score)    
 
     const response = await fetch(`/api/reviews/${id}`, {
       method: 'PUT',
