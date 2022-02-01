@@ -13,51 +13,53 @@
 <body>
   <div class="wrapper">
 
-   <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-        <a class="navbar-item">
-        <img src="/assests/images/RetroRewindLittle.svg" width="112" height="50">
-        </a>
-    </div>
+   <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item">
+                <img src="/assests/images/RetroRewindLittle.svg" width="112" height="50">
+            </a>
 
-    <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-start">
-        
-
-       
-
-        {{#if loggedIn}}
-        <a class="navbar-item" href="/dashboard">
-            Dashboard
-        </a>
-        {{else}}
-        <a class="navbar-item" href="/">
-            Home
-        </a>
-        {{/if}}
-
-         <a class="navbar-item" href="/searchMovies">
-            Movies
-        </a>
+            <a role="button" class="navbar-burger" id="burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
         </div>
 
-        <div class="navbar-end">
-        <div class="navbar-item">
-            <div class="buttons">
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
                 {{#if loggedIn}}
-                <button id="logout" class="button is-light">logout</button>
-                {{else}}
-                <a class="button is-primary" href="/signup">
-                    <strong>Sign up</strong>
+                <a class="navbar-item"  href="/dashboard">
+                    Dashboard
                 </a>
-                <a class="button is-light" href="/login">
-                    Log in
+                {{else}}
+                <a class="navbar-item" href="/">
+                    Home
                 </a>
                 {{/if}}
+
+                <a class="navbar-item" href="/searchMovies">
+                    Movies
+                </a>
+            </div>
+
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        {{#if loggedIn}}
+                        <a id="logout" class="button is-light">logout</a>
+                        {{else}}
+                        <a class="button is-primary" href="/signup">
+                            <strong>Sign up</strong>
+                        </a>
+                        <a class="button is-light" href="/login">
+                            Log in
+                        </a>
+                        {{/if}}
+                    </div>
+                </div>
             </div>
         </div>
-        </div>
-    </div>
     </nav>
 
     <main>
@@ -73,6 +75,7 @@
 {{/if}}
 </body>
 
+<script src="/javascript/navbar.js"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 
 </html>
