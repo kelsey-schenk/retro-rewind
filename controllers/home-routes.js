@@ -74,12 +74,26 @@ router.get('/dashboard', (req, res) => {
       })
         .then(dbRentalData => {
           const rentals = dbRentalData.map(rental => rental.get({ plain: true }));
-          console.log(rentals);
-          res.render('dashboard', {
-            rentals,
-            movies,
-            loggedIn: req.session.loggedIn
-          });
+          
+          //Fetch User Reviews
+
+          Reviews.findAll({
+            attributes: ['id', 'review_title', 'review_text'],
+            where: {
+              user_id: req.session.user_id
+            }
+          })
+            .then(dbReviewsData => {
+              const reviews = dbReviewsData.map(rental => rental.get({ plain: true }));
+              console.log(reviews)
+    
+              res.render('dashboard', {
+                rentals,
+                reviews,
+                movies,
+                loggedIn: req.session.loggedIn
+              });
+            })
         })
         .catch(err => {
           console.log(err);

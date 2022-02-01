@@ -45,9 +45,10 @@
                     </thead>
 
                     <tbody>
+                        {{#each reviews}}
                         <tr>
                             <th>
-                                Free Willy
+                                {{review_title}}
                             </th>
                             <th>
                                 <div class="tableButton">
@@ -55,18 +56,7 @@
                                 </div>
                             </th>
                         </tr>
-
-                        <tr>
-                            <th>
-                                The Goonies
-                            </th>
-                            <th>
-                                <div class="tableButton">
-                                    <button class="button is-warning reviewEdit" >Edit</button>
-                                </div>
-                            </th>
-                        </tr>
-
+                        {{/each}}
                     </tbody>
                 </table>
             </div>
