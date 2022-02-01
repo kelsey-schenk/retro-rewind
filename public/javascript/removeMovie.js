@@ -1,42 +1,23 @@
-var btn = document.getElementById("removeMovie");
+var btns = document.querySelectorAll('.removeMovie');
 
-// When the user clicks on the button, open the modal
-btn.onclick = function() {
-  console.log("yes")
+async function removeMovieFormHandler(event) {
+  var id = this.dataset.id;
+
+  const response = await fetch(`/api/movies/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+
+  if (response.ok) {
+    document.location.reload();
+  } else {
+    alert(response.statusText);
+  }
+
 }
 
-//-----------------------------------
-// Remove Movie Logic
-//-----------------------------------
-async function removeMovieFormHandler(event) {
-    event.preventDefault();
-  
-  const title = document.querySelector('#movie-title').value.trim();
-  const description = document.querySelector('#movie-description').value.trim();
-  
-  console.log("yes");
-
-  /*
-  if (title)  {
-      if (description) {
-          const response = await fetch('/api/movies', {
-              method: 'POST',
-              body: JSON.stringify({
-                title,
-                description
-              }),
-              headers: {
-                'Content-Type': 'application/json'
-              }
-            });
-        
-            if (response.ok) {
-                modal.style.display = "none"
-                document.location.reload();
-            } else {
-              alert(response.statusText);
-            }
-      }
-    }
-  */
-  }
+btns.forEach(function (btn) {
+  btn.addEventListener('click', removeMovieFormHandler);
+});

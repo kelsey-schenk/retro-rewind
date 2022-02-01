@@ -23,7 +23,7 @@
                             </th>
                             <th>
                                 <div class="tableButton">
-                                    <button class="button is-danger" id="removeMovie" type="submit">Remove</button>
+                                    <button class="button is-danger removeMovie" data-id="{{id}}" >Remove</button>
                                 </div>
                             </th>
                         </tr>
@@ -62,7 +62,7 @@
                             </th>
                             <th>
                                 <div class="tableButton">
-                                    <button class="button is-warning">Edit</button>
+                                    <button class="button is-warning reviewEdit" >Edit</button>
                                 </div>
                             </th>
                         </tr>
@@ -91,7 +91,7 @@
                             </th>
                             <th>
                                 <div class="tableButton">
-                                    <button class="button is-info">Return</button>
+                                    <button class="button is-info returnMovie" data-id="{{id}}" data-movie="{{movie.id}}">Return</button>
                                 </div>
                             </th>
                         </tr>
@@ -181,3 +181,4 @@
 
 <script src="/javascript/addMovie.js"></script>
 <script src="/javascript/removeMovie.js"></script>
+<script src="/javascript/checkinMovie.js"></script>

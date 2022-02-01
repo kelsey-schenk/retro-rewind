@@ -68,7 +68,7 @@ router.get('/dashboard', (req, res) => {
         include: [
           {
             model: Movies,
-            attributes: ['title']
+            attributes: ['title', 'id']
           }
         ]
       })

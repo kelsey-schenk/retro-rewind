@@ -28,12 +28,10 @@ Movies.hasMany(Reviews, {
 });
 
 Rentals.belongsTo(Movies, {
-  foreignKey: 'movie_id'
+  foreignKey: 'movie_id',
+  onDelete: 'cascade'
 });
 
-
-
-// This is where it starts to not line up so cleanly
 
 
 module.exports = { User, Movies, Rentals, Reviews };
