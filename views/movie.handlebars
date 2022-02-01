@@ -4,7 +4,7 @@
             <h1 class="movieTitle">{{movie.title}}</h1>
             <p class="movieDescription">{{movie.description}}
             </p>
-            <div class="reviews">c
+            <div class="reviews">
                 {{#each movie.reviews as |review| }}
                 {{> reviews review  }}
                 {{/each}}
