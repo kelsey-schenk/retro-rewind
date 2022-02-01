@@ -1,8 +1,8 @@
-<div>
+<section class="container">
     <div class="columns">
         <div class="column is-two-thirds">
-            <h1 class="movieTitle">{{movie.title}}</h1>
-            <p class="movieDescription">{{movie.description}}
+            <h1 class="movieTitle is-size-1">{{movie.title}}</h1>
+            <p class="movieDescription is-size-4">{{movie.description}}
             </p>
             <div class="reviews">
                 {{#each movie.reviews as |review| }}
@@ -11,21 +11,21 @@
             </div>
         </div>
         <div class="column">
-            <h1 class="movieRating">{{movie.rating}}</h1>
+            <h1 class="movieRating is-size-2 has-text-warning-dark">{{movie.rating}}</h1>
 
-            <div class="buttons">
+            <div class="buttons is-centered">
                 <button class="button is-primary" id="addReview">Add Review</button>
             </div>
 
             {{#ifEquals movie.status "available" }}
-            <div class="buttons">
+            <div class="buttons is-centered">
                 <button class="button is-info" id="checkOut" type="submit">Check Out</button>
             </div>
             {{/ifEquals}}
         </div>
 
     </div>
-</div>
+</section>
 
 
 <!-- The Modal -->
