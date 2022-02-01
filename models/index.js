@@ -21,7 +21,4 @@ Rentals.belongsTo(Movies, {
 
 
 
-// This is where it starts to not line up so cleanly
-
-
 module.exports = { User, Movies, Rentals, Reviews };

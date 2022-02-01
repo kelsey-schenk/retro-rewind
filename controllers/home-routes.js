@@ -18,14 +18,6 @@ router.get('/signup', (req, res) => {
   res.render('signup');
 });
 
-/*
-router.get('/dashboard', (req, res) => {
-  res.render('dashboard', {
-    loggedIn: req.session.loggedIn
-  });
-});
-*/
-
 //USER SESSION
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
@@ -76,7 +68,7 @@ router.get('/dashboard', (req, res) => {
         include: [
           {
             model: Movies,
-            attributes: ['title']
+            attributes: ['title', 'id']
           }
         ]
       })
