@@ -8,18 +8,18 @@ const UserData = [
 		password: 'password'
   },
   {
-    username: 'User2',
-    email: 'email2@gmail.com',
+    username: 'Erik',
+    email: 'erik@gmail.com',
     password: 'password123'
   },
   {
-    username: 'User3',
-    email: 'email3@gmail.com',
+    username: 'Kelsey',
+    email: 'kesley@gmail.com',
     password: 'password123'
   },
   {
-    username: 'User4',
-    email: 'email4@gmail.com',
+    username: 'Kevin',
+    email: 'kevin@gmail.com',
     password: 'password123'
   },
   {
