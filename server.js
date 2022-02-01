@@ -9,7 +9,12 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const app = express();
 const PORT = process.env.PORT || 3001;
 const exphbs = require('express-handlebars');
-const hbs = exphbs.create({});
+var hbs = exphbs.create();
+
+// Allows ifEquals to be used on movies.handlebars
+hbs.handlebars.registerHelper('ifEquals', function(arg1, arg2, options) {
+  return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+});
 
 const sess = {
   secret: 'Super secret secret',

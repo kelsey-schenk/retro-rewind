@@ -78,24 +78,29 @@ router.post('/', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-    Movies.update(req.body, {
-        individualHooks: true,
+    Movies.update(
+      {
+        status: req.body.status
+      },
+      {
         where: {
-            id: req.params.id
+          id: req.params.id
         }
-    })
-    .then(dbMoviesData => {
-        if (!dbMoviesData[0]) {
-            res.status(404).json({ message: 'No movie found with this id'});
-            return;
+      }
+    )
+      .then(dbMovieData => {
+        if (!dbMovieData) {
+          res.status(404).json({ message: 'No post found with this id' });
+          return;
         }
-        res.json(dbMoviesData);
-    })
-    .catch(err => {
+        console.log(dbMovieData)
+        res.json(dbMovieData);
+      })
+      .catch(err => {
         console.log(err);
         res.status(500).json(err);
-    });
-});
+      });
+  });
 
 
 router.delete('/:id', (req, res) => {
