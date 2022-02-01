@@ -1,50 +1,64 @@
 const { Reviews } = require('../models');
 
-const postdata = [
+const ReviewsData = [
   {
-		user_id: "User2",
+		score: "4",
+		review_title: "Two thumbs up!",
+		review_text: "Must see magical movie of the season.",
+		user_id: "1",
 		movie_id: "1",
-		rating: '5',
-		title: "Two thumbs up!",
-		description: "A must see movie."
+		rating_provided: "5",
 	},
 	{
-		user_id: "User3",
-		movie_id: "2",
-		rating: '5',
-		title: "Two thumbs down!",
-		description: "A must not see movie."	
-	},
-	{
-		user_id: "User3",
+		score: "1",
+		review_title: "Two thumbs down!",
+		review_text: "Absolute garbage movie, really bad.",
+		user_id: "4",
 		movie_id: "3",
-		rating: '2',
-		title: "Feel good movie of the season!",
-		description: "Such super good feelings."	
+		rating_provided: "1",
 	},
 	{
-		user_id: "User5",
+		score: "5",
+		review_title: "Super duper good movie!",
+		review_text: "SUch a magical feel good movie.",
+		user_id: "1",
+		movie_id: "1",
+		rating_provided: "5",
+	},
+	{
+		score: "3",
+		review_title: "A very meh movie",
+		review_text: "It was alright.",
+		user_id: "6",
+		movie_id: "3",
+		rating_provided: "3",
+	},
+	{
+		score: "4",
+		review_title: "Super good movie.",
+		review_text: "Twaz a legit movie bro.",
+		user_id: "7",
 		movie_id: "4",
-		rating: '3',
-		title: "Super special movie.",
-		description: "A classic. #blessed"	
+		rating_provided: "4",
 	},
 	{
-		user_id: "User4",
+		score: "2",
+		review_title: "Not a good movie.",
+		review_text: "It was like totally not a good movie.",
+		user_id: "6",
 		movie_id: "5",
-		rating: '5',
-		title: "Not a total waste of money.",
-		description: "Such a magical movie."	
+		rating_provided: "2",
 	},
 	{
-		user_id: "User8",
+		score: "3",
+		review_title: "Not good but not bad.",
+		review_text: "An alright way to kill two hours.",
+		user_id: "3",
 		movie_id: "6",
-		rating: '1',
-		title: "Stunning and brave performance",
-		description: "A rather shallow attemp at cinima."	
-	}
+		rating_provided: "3",
+	},
 ];
 
-const seedReviews = () => Post.bulkCreate(ReviewsData);
+const seedReviews = () => Reviews.bulkCreate(ReviewsData);
 
-module.exports = seedReviews;
+module.exports = seedReviews; 

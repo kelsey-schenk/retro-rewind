@@ -3,21 +3,30 @@ const { Reviews } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.get('/', (req, res) => {
-    Reviews.findAll({
-        attributes: ['id', 'post_url', 'title', 'review', 'created_at'],
-        include: [
-          {
-            model: User,
-            attributes: ['username']
-          }
-        ]
-      })
-        .then(dbReviewsData => res.json(dbReviewsData))
-        .catch(err => {
+    Reviews.findAll()
+      .then(dbReviewsData => res.json(dbReviewsData))
+      .catch(err => {
         console.log(err);
         res.status(500).json(err);
-    });
+      });
 });
+
+// router.get('/', (req, res) => {
+//     Reviews.findAll({
+//         attributes: ['id', 'post_url', 'title', 'review', 'created_at'],
+//         include: [
+//           {
+//             model: User,
+//             attributes: ['username']
+//           }
+//         ]
+//       })
+//         .then(dbReviewsData => res.json(dbReviewsData))
+//         .catch(err => {
+//         console.log(err);
+//         res.status(500).json(err);
+//     });
+// });
 
 
 router.post('/', (req, res) => {
