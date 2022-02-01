@@ -1,17 +1,35 @@
-# RETRO REWIND
+# retro-rewind
 
-# Description
+## Purpose
 A site where cinephiles can go to rent their favorite movies on VHS.
 
-# Built With
+## Website Preview
+
+![alt text](https://github.com/kelsey-schenk/retro-rewind/tree/main/public/assests/images/movies.png)
+![alt text](https://github.com/kelsey-schenk/retro-rewind/tree/main/public/assests/images/dasboard.png)
+
+## Built With
+* HTML
+* CSS
+* JavaScript
+* Node
 * Handlebars
 * Express
-* MySQL2
-* Node.js
 * Bulma
+* Heroku
+* SQL
 
-# Made By
-Shawna Boucher,
-Kevin Godek,
-Erik Jones,
-Kelsey Schenk
+## Website
+https://retro-rewind.herokuapp.com/
+
+## Contribution
+* Shawna Boucher
+* Kevin Godek
+* Erik Jones
+* Kelsey Schenk,
+
+
+## License
+
+https://choosealicense.com/licenses/mit/
+

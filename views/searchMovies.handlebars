@@ -1,0 +1,10 @@
+{{#each movies}}
+<div class="box" onclick="location.href='/movie/{{id}}'" style="cursor:pointer">
+    <div class="title">
+        <h2>{{title}}</h2>
+    </div>
+    <div class="rating">
+        <h3>{{description}}</h3>
+    </div>
+</div>
+{{/each}}

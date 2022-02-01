@@ -3,16 +3,22 @@
     "bcrypt": "^5.0.1",
     "bulma": "^0.9.3",
     "connect-session-sequelize": "^7.1.2",
-    "dotenv": "^14.3.0",
+    "dotenv": "^14.3.2",
     "express": "^4.17.2",
+    "express-handlebars": "^6.0.2",
     "express-session": "^1.17.2",
     "handlebars": "^4.7.7",
     "mysql2": "^2.3.3",
-    "nodemon": "^2.0.15",
-    "sequelize": "^6.14.0"
+    "sequelize": "^6.14.1"
+  },
+  "nodemonConfig": {
+    "delay": 2000,
+    "ignore": []
   },
   "scripts": {
-    "start": "node server.js"
+    "watch": "nodemon",
+    "start": "node server.js",
+    "seeds": "node seeds/index.js"
   },
   "name": "retro-rewind",
   "description": "",
@@ -27,5 +33,10 @@
   "bugs": {
     "url": "https://github.com/kelsey-schenk/retro-rewind/issues"
   },
-  "homepage": "https://github.com/kelsey-schenk/retro-rewind#readme"
+  "homepage": "https://github.com/kelsey-schenk/retro-rewind#readme",
+  "devDependencies": {
+    "jest": "^27.4.7",
+    "nodemon": "^2.0.15"
+  },
+  "keywords": []
 }

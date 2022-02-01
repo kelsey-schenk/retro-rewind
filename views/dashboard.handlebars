@@ -1,0 +1,230 @@
+{{#if loggedIn}}
+<div class="columns">
+    <div class="column">
+        <div class="columns is-mobile is-centered">
+            <div class="column moviesTable">
+                <table class="table is-striped is-hoverable is-fullwidth">
+                    <thead>
+                        <tr>
+                            <th>My Movies</th>
+                            <th>
+                                <div class="tableButton">
+                                    <button class="button is-primary" id="addMovie">Add Movie</button>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {{#each movies}}
+                        <tr>
+                            <th>
+                                {{title}}
+                            </th>
+                            <th>
+                                <div class="tableButton">
+                                    <button class="button is-danger removeMovie" data-id="{{id}}" >Remove</button>
+                                </div>
+                            </th>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="columns is-mobile is-centered">
+            <div class="column">
+                <table class="table is-striped is-hoverable is-fullwidth">
+                    <thead>
+                        <tr>
+                            <th colspan="2">My Reviews</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {{#each reviews}}
+                        <tr>
+                            <th>
+                                {{review_title}}
+                            </th>
+                            <th>
+                                <div class="tableButton">
+                                    <button class="button is-warning editReview" data-id="{{id}}" data-text="{{review_text}}" data-title="{{review_title}}" data-score="{{score}}">Edit</button>
+                                </div>
+                            </th>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="columns is-mobile is-centered">
+            <div class="column">
+                <table class="table is-striped is-hoverable is-fullwidth">
+                    <thead>
+                        <tr>
+                            <th colspan="2">Current Rentals</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {{#each rentals}}
+                        <tr>
+                            <th>
+                                {{movie.title}}
+                            </th>
+                            <th>
+                                <div class="tableButton">
+                                    <button class="button is-info returnMovie" data-id="{{id}}" data-movie="{{movie.id}}">Return</button>
+                                </div>
+                            </th>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{{else}}
+<div class="column">
+    <div class="columns is-mobile is-centered">
+        <div class="column">
+            <p>You need to sign in first!</p>
+        </div>
+    </div>
+</div>
+{{/if}}
+
+
+<!-- The Modal -->
+<div id="add-movie-modal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+
+        <form class="user-form movie-form">
+            
+            <div class="field has-addons">
+                <div class="control is-expanded">
+                    <div class="select is-fullwidth">
+                        <select name="rating" id="rating-selection">
+                            <option value="" disabled selected>Select Rating</option>
+                            <option value="NR">NR</option>
+                            <option value="G">G</option>
+                            <option value="PG">PG</option>
+                            <option value="PG-13">PG-13</option>
+                            <option value="R">R</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="control">
+                    <button type="submit" class="button is-primary">Choose</button>
+                </div>
+            </div>
+
+            <div class="field">
+                <p class="control has-icons-left has-icons-right">
+                    <input class="input" id="movie-title" type="text" placeholder="Movie Title">
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-film"></i>
+                    </span>
+                </p>
+
+            </div>
+
+            <div class="field">
+                <p class="control has-icons-left has-icons-right">
+                    <input class="input" id="movie-description" type="text" placeholder="Description">
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-pencil-alt"></i>
+                    </span>
+                </p>
+
+            </div>
+
+            <div class="buttons">
+                <button class="button is-primary" type="submit">Add Movie</button>
+            </div>
+        </form>
+
+
+
+
+
+
+
+    </div>
+
+
+</div>
+
+</div>
+
+<!-- The Modal -->
+<div id="review-modal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+
+        <form class="user-form review-form">
+            <div class="field has-addons">
+                <div class="control is-expanded">
+                    <div class="select is-fullwidth">
+                        <select name="score" id="score-selection">
+                            <option value="" disabled selected>Select Score</option>
+                            <option value="1 Star">1 Star</option>
+                            <option value="2 Star">2 Star</option>
+                            <option value="3 Star">3 Star</option>
+                            <option value="4 Star">4 Star</option>
+                            <option value="5 Star">5 Star</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="control">
+                    <button type="submit" class="button is-primary">Choose</button>
+                </div>
+            </div>
+
+            <div class="field">
+                <p class="control has-icons-left has-icons-right">
+                    <input class="input" id="review-title" type="text" spellcheck="true" placeholder="Review Title">
+                    <span class="icon is-small is-left">
+                        <i class="far fa-edit"></i>
+                    </span>
+                </p>
+
+            </div>
+
+            <div class="field">
+                <p class="control has-icons-left has-icons-right">
+                    <input class="input" id="review-description" type="text" spellcheck="true" placeholder="Description">
+                    <span class="icon is-small is-left">
+                        <i class="far fa-file-alt"></i>
+                    </span>
+                </p>
+
+            </div>
+
+            <div class="buttons">
+                <button class="button is-primary" type="submit">Submit Review</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+<script src="/javascript/addMovie.js"></script>
+<script src="/javascript/removeMovie.js"></script>
+<script src="/javascript/checkinMovie.js"></script>
+<script src="/javascript/editReview.js"></script>
