@@ -78,14 +78,13 @@ router.get('/dashboard', (req, res) => {
           //Fetch User Reviews
 
           Reviews.findAll({
-            attributes: ['id', 'review_title', 'review_text'],
+            attributes: ['id', 'review_title', 'review_text', 'score'],
             where: {
               user_id: req.session.user_id
             }
           })
             .then(dbReviewsData => {
               const reviews = dbReviewsData.map(rental => rental.get({ plain: true }));
-              console.log(reviews)
     
               res.render('dashboard', {
                 rentals,
