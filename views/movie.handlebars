@@ -12,10 +12,14 @@
                     <p class="username">
                         movieGooROO
                     </p>
+
                     <p class="reviewDescription">
                         Loved this movie as a kid!
                     </p>
                 </div>
+                {{#each movie.reviews as |review| }}
+                {{> reviews review  }}
+                {{/each}}
             </div>
         </div>
         <div class="column">
