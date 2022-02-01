@@ -86,12 +86,10 @@ router.get('/movie/:id', (req, res) => {
       {
         model: Reviews,
         attributes: ['id', 'review_title', 'review_text', 'movies_id', 'user_id'],
-        /*
         include: {
           model: User,
           attributes: ['username']
         }
-        */
       },
       {
         model: User,

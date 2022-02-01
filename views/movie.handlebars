@@ -17,7 +17,9 @@
                         Loved this movie as a kid!
                     </p>
                 </div>
-                {{> reviews }}
+                {{#each movie.reviews as |review| }}
+                {{> reviews review  }}
+                {{/each}}
             </div>
         </div>
         <div class="column">
