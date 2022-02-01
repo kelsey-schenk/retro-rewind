@@ -1,6 +1,6 @@
 const { Movies } = require('../models');
 
-const postdata = [
+const MoviesData = [
   {
 		title: "Free Willy",
 		rating: "PG-13",

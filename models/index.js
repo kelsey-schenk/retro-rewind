@@ -15,7 +15,8 @@ Movies.belongsTo(User, {
 });
 
 Rentals.belongsTo(Movies, {
-  foreignKey: 'movie_id'
+  foreignKey: 'movie_id',
+  onDelete: 'cascade'
 });
 
 
