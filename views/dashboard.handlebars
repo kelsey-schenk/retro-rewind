@@ -45,28 +45,18 @@
                     </thead>
 
                     <tbody>
+                        {{#each reviews}}
                         <tr>
                             <th>
-                                Free Willy
+                                {{review_title}}
                             </th>
                             <th>
                                 <div class="tableButton">
-                                    <button class="button is-warning">Edit</button>
+                                    <button class="button is-warning editReview" data-id="{{id}}" data-text="{{review_text}}" data-title="{{review_title}}" data-score="{{score}}">Edit</button>
                                 </div>
                             </th>
                         </tr>
-
-                        <tr>
-                            <th>
-                                The Goonies
-                            </th>
-                            <th>
-                                <div class="tableButton">
-                                    <button class="button is-warning reviewEdit" >Edit</button>
-                                </div>
-                            </th>
-                        </tr>
-
+                        {{/each}}
                     </tbody>
                 </table>
             </div>
@@ -179,6 +169,62 @@
 
 </div>
 
+<!-- The Modal -->
+<div id="review-modal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+
+        <form class="user-form review-form">
+            <div class="field has-addons">
+                <div class="control is-expanded">
+                    <div class="select is-fullwidth">
+                        <select name="score" id="score-selection">
+                            <option value="" disabled selected>Select Score</option>
+                            <option value="1 Star">1 Star</option>
+                            <option value="2 Star">2 Star</option>
+                            <option value="3 Star">3 Star</option>
+                            <option value="4 Star">4 Star</option>
+                            <option value="5 Star">5 Star</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="control">
+                    <button type="submit" class="button is-primary">Choose</button>
+                </div>
+            </div>
+
+            <div class="field">
+                <p class="control has-icons-left has-icons-right">
+                    <input class="input" id="review-title" type="text" spellcheck="true" placeholder="Review Title">
+                    <span class="icon is-small is-left">
+                        <i class="far fa-edit"></i>
+                    </span>
+                </p>
+
+            </div>
+
+            <div class="field">
+                <p class="control has-icons-left has-icons-right">
+                    <input class="input" id="review-description" type="text" spellcheck="true" placeholder="Description">
+                    <span class="icon is-small is-left">
+                        <i class="far fa-file-alt"></i>
+                    </span>
+                </p>
+
+            </div>
+
+            <div class="buttons">
+                <button class="button is-primary" type="submit">Submit Review</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+
 <script src="/javascript/addMovie.js"></script>
 <script src="/javascript/removeMovie.js"></script>
 <script src="/javascript/checkinMovie.js"></script>
+<script src="/javascript/editReview.js"></script>
