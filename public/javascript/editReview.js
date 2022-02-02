@@ -11,10 +11,10 @@ var id = 0;
 // Modal Logic
 //-----------------------------------
 // Close Modal
-var span = document.getElementsByClassName("close")[0];
+var spanReview = document.getElementsByClassName("close")[0];
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function () {
+spanReview.onclick = function () {
     modal.style.display = "none";
 }
 
