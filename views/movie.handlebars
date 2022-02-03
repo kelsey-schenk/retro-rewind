@@ -11,17 +11,20 @@
             </div>
         </div>
         <div class="column">
+            <h2 class="rating has-text-centered">MPAA Rating</h2>
             <h1 class="movieRating is-size-2 has-text-warning-dark">{{movie.rating}}</h1>
 
+            {{#if loggedIn}}    
             <div class="buttons is-centered">
                 <button class="button is-primary" id="addReview">Add Review</button>
             </div>
-
+                    
             {{#ifEquals movie.status "available" }}
             <div class="buttons is-centered">
                 <button class="button is-info" id="checkOut" type="submit">Check Out</button>
             </div>
             {{/ifEquals}}
+            {{/if}}
         </div>
 
     </div>
